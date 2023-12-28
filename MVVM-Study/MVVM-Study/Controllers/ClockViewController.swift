@@ -7,14 +7,32 @@
 
 import UIKit
 
-class ClockViewController: UIViewController {
+import SnapKit
+
+final class ClockViewController: UIViewController {
+    let clockView: UIView = ClockView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.backgroundColor = .lightGray
+        setUI()
     }
 
+    func setUI() {
+        self.view.backgroundColor = .white
+        
+        setHierarchy()
+        setConstraints()
+    }
 
+    func setHierarchy() {
+        self.view.addSubview(clockView)
+    }
+
+    func setConstraints() {
+        clockView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
 }
 
